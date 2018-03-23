@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - name: Limit to Archlinux
+      fail:
+        msg: "{{ ansible_distribution }} is not supported with this tag."
+      when: ansible_distribution != "Archlinux"
+
+- hosts: all
+  roles:
+    - { role: loader, tags: all }
